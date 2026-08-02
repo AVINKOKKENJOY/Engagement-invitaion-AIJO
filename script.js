@@ -1,9 +1,11 @@
-
 if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
 
+// 1. PETAL GENERATOR
 function createPetals() {
     const container = document.getElementById('petal-container');
-    for (let i = 0; i < 100; i++) {
+    const petalCount = 100; 
+
+    for (let i = 0; i < petalCount; i++) {
         const petal = document.createElement('div');
         petal.className = 'petal';
         const size = Math.random() * 12 + 8 + 'px';
@@ -16,16 +18,20 @@ function createPetals() {
     }
 }
 
+// 2. ENTRANCE & INITIALIZATION
 document.getElementById('startBtn').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'instant' });
     const music = document.getElementById('bgMusic');
     music.play().catch(e => console.log("Music ready."));
     document.getElementById('entrance-overlay').classList.add('hide-overlay');
     createPetals();
-    setTimeout(() => { AOS.init({ duration: 1200, once: true }); }, 500);
+    setTimeout(() => { 
+        AOS.init({ duration: 1200, once: true }); 
+    }, 500);
 });
 
-// COUNTDOWN TIMER
+// 3. COUNTDOWN TIMER
+// Set target to August 16, 2026 (Sunday) at 12:00 PM
 const engagementDate = new Date("August 16, 2026 12:00:00").getTime();
 function updateTimer() {
     const now = new Date().getTime();

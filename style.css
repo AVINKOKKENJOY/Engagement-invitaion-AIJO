@@ -19,47 +19,57 @@ html, body {
 #petal-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999999; overflow: hidden; }
 .petal { position: absolute; background-color: var(--petal-pink); border-radius: 150% 0 150% 0; opacity: 0.8; animation: fall linear infinite; }
 @keyframes fall {
-    0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+    0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
     10% { opacity: 0.8; }
-    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+    100% { transform: translateY(110vh) translateX(150px) rotate(720deg); opacity: 0; }
 }
 
-/* HERO SECTION - INTEGRATING YOUR IMAGE */
+/* HERO SECTION - INTEGRATING WATERCOLOR BACKGROUND */
 .hero {
     height: 100vh;
-    background: url('background.jpg') center bottom/cover no-repeat fixed;
-    display: flex; flex-direction: column; align-items: center; justify-content: flex-start; /* Kept text at top to not cover your faces */
-    color: #333; /* Darker text for visibility on watercolor */
-    padding-top: 5vh;
+    background: url('background.jpg') center center/cover no-repeat fixed;
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    position: relative;
+    padding-top: 8vh;
+    color: #1a1a1a;
 }
 
-/* Added a subtle white glow to text to make it readable over the watercolor */
-.main-title { 
-    font-family: 'Cormorant Garamond', serif; 
-    font-size: clamp(3rem, 10vw, 6rem); 
-    margin: 10px 0; 
-    font-weight: 600; 
-    text-shadow: 0 0 20px rgba(255,255,255,0.8);
-}
-
-.hero-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, transparent 50%);
+/* Gradient to ensure text is readable at the top while faces show at the bottom */
+.hero-overlay-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.2) 40%, transparent 100%);
     pointer-events: none;
 }
 
-/* COUNTDOWN */
-.countdown { display: flex; gap: 20px; justify-content: center; margin: 30px 0; }
-.time-node { 
-    min-width: 80px; 
-    border-bottom: 2px solid var(--gold); 
-    padding-bottom: 5px;
-    background: rgba(255,255,255,0.4);
-    backdrop-filter: blur(5px);
-    border-radius: 5px;
+.main-title { 
+    font-family: 'Cormorant Garamond', serif; 
+    font-size: clamp(3rem, 10vw, 5.5rem); 
+    margin: 10px 0; 
+    font-weight: 600; 
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 0 20px #ffffff; /* Glow for legibility */
 }
 
-/* TYPOGRAPHY & CARDS */
+.amp { font-family: 'Pinyon Script', cursive; color: var(--gold); font-size: 0.8em; }
+
+/* COUNTDOWN OVER IMAGE */
+.countdown { 
+    display: flex; gap: 15px; justify-content: center; margin: 30px 0; 
+    position: relative; z-index: 2;
+}
+.time-node { 
+    min-width: 75px; 
+    border-bottom: 2px solid var(--gold); 
+    padding: 5px 10px;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(5px);
+    border-radius: 4px;
+}
+.time-node span { font-size: 1.8rem; font-weight: 600; display: block; font-family: 'Cormorant Garamond', serif; }
+
+/* UI ELEMENTS */
 .script { font-family: 'Pinyon Script', cursive; }
 .gold-text { color: var(--gold); }
 .center { display: flex; justify-content: center; align-items: center; flex-direction: column; }
@@ -70,28 +80,41 @@ html, body {
 #startBtn { margin-top: 30px; padding: 12px 45px; background: transparent; color: var(--gold); border: 2px solid var(--gold); text-transform: uppercase; letter-spacing: 4px; cursor: pointer; font-weight: 600; }
 .hide-overlay { opacity: 0; pointer-events: none; transform: translateY(-100%); }
 
-.family-sequence-box { margin: 50px auto; max-width: 800px; display: flex; flex-direction: column; align-items: center; gap: 25px; }
-.serif-name-large { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 600; color: var(--dark); margin: 0; }
-.relationship-label { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.3rem; color: var(--gold); font-weight: 600; }
-.parent-names { font-family: 'Montserrat', sans-serif; font-size: 1.25rem; font-weight: 400; margin: 0; color: #444; }
-.house-name { font-family: 'Montserrat', sans-serif; font-size: 0.95rem; color: #888; letter-spacing: 1px; text-transform: uppercase; margin-top: 5px; }
+/* FAMILY SECTION */
+.family-sequence-box { margin: 50px auto; max-width: 800px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.serif-name-large { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; color: var(--dark); margin: 0; }
+.relationship-label { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; color: var(--gold); font-weight: 600; }
+.parent-names { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 400; margin: 0; }
+.house-name { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; color: #888; text-transform: uppercase; margin-top: 5px; letter-spacing: 1px; }
+.amp-divider { font-size: 3rem; margin: 5px 0; opacity: 0.8; }
 
+/* EVENT CARD */
 .event-info-card { background: white; display: flex; justify-content: space-around; padding: 60px 20px; border: 1px solid #eee; border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.03); }
+.event-item { flex: 1; padding: 0 20px; }
 .border-side { border-left: 1px solid #eee; }
+.gold-icon-large { font-size: 2rem; color: var(--gold); margin-bottom: 20px; }
+.event-label { font-family: 'Cormorant Garamond', serif; letter-spacing: 2px; font-size: 1.2rem; font-weight: 600; text-transform: uppercase; }
 
+/* MAP */
+.map-container-refined { max-width: 900px; margin: 0 auto; border: 1px solid #eee; padding: 10px; background: white; border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.03); overflow: hidden; }
+.map-container-refined iframe { border-radius: 4px; display: block; filter: grayscale(10%) contrast(105%); }
+
+/* HELPERS */
 .section-padding { padding: 120px 20px; }
-.white-bg { background-color: #fff; }
+.story-text { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; max-width: 800px; margin: 0 auto; }
+.gold-line { width: 120px; height: 1px; background: var(--gold); margin: 60px auto; }
+.larger { font-size: 4.5rem; }
 .ivory-bg { background-color: var(--ivory); }
-.map-container-refined { max-width: 900px; margin: 0 auto; border: 1px solid #eee; border-radius: 8px; overflow: hidden; }
+.white-bg { background-color: #fff; }
 
-.gold-btn-outline { text-decoration: none; display: inline-block; padding: 12px 35px; border: 1px solid var(--gold); color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; transition: 0.3s; }
+.gold-btn-outline { text-decoration: none; display: inline-block; padding: 12px 35px; border: 1px solid var(--gold); color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; font-weight: 600; transition: 0.3s; }
 .gold-btn-outline:hover { background: var(--gold); color: white; }
 
 footer { padding: 100px; border-top: 1px solid #eee; }
 
 @media (max-width: 768px) {
-    .hero { background-attachment: scroll; }
-    .main-title { font-size: 3rem; }
+    .hero { background-attachment: scroll; padding-top: 5vh; }
+    .main-title { font-size: 2.8rem; }
     .event-info-card { flex-direction: column; gap: 40px; }
-    .border-side { border: none; border-top: 1px solid #eee; padding-top: 40px; }
+    .border-side { border-left: none; border-top: 1px solid #eee; padding-top: 40px; }
 }
