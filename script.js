@@ -57,6 +57,7 @@ document.getElementById('muteBtn').addEventListener('click', function() {
 });
 
 // 5. COUNTDOWN TIMER
+// Engagement Date: August 16, 2026 at 12:00 PM
 const engagementDate = new Date("August 16, 2026 12:00:00").getTime();
 function updateTimer() {
     const now = new Date().getTime();
