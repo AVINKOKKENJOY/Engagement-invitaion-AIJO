@@ -26,9 +26,8 @@ document.getElementById('startBtn').addEventListener('click', () => {
     setTimeout(() => { AOS.init({ duration: 1200, once: true }); }, 500);
 });
 
-// 3. COUNTDOWN TIMER LOGIC
+// 3. COUNTDOWN TIMER
 const engagementDate = new Date("August 16, 2026 12:00:00").getTime();
-
 function updateTimer() {
     const now = new Date().getTime();
     const distance = engagementDate - now;
@@ -48,6 +47,5 @@ function updateTimer() {
     document.getElementById("mins").innerText = m.toString().padStart(2, '0');
     document.getElementById("secs").innerText = s.toString().padStart(2, '0');
 }
-
 setInterval(updateTimer, 1000);
 updateTimer();

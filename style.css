@@ -24,40 +24,66 @@ html, body {
     100% { transform: translateY(110vh) translateX(150px) rotate(720deg); opacity: 0; }
 }
 
-/* HERO SECTION - WATERCOLOR BACKGROUND */
+/* HERO SECTION - MODIFIED FOR BLANK SPACE POSITIONING */
 .hero {
     height: 100vh;
-    background: url('background.jpg') center center/cover no-repeat fixed;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    position: relative; color: #1a1a1a;
+    background: url('background.jpg') center bottom/cover no-repeat fixed;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: flex-start; /* Aligns content to the top */
+    position: relative;
+    padding-top: 10vh; /* Pushes text into the blank top space */
+    color: #1a1a1a;
 }
-.hero-overlay-gradient { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.1) 40%, transparent 100%); pointer-events: none; }
-.main-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 10vw, 5.5rem); margin: 10px 0; font-weight: 600; text-shadow: 0 0 20px #ffffff; position: relative; z-index: 2; }
+
+/* Subtle gradient to keep top text sharp */
+.hero-overlay-gradient {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.main-title { 
+    font-family: 'Cormorant Garamond', serif; 
+    font-size: clamp(2.5rem, 8vw, 5.5rem); 
+    margin: 5px 0; 
+    font-weight: 600; 
+    position: relative; z-index: 2;
+    text-shadow: 0 0 20px #ffffff, 0 0 10px #ffffff; /* Double glow for legibility */
+}
+
+.tagline { 
+    letter-spacing: 6px; font-weight: 600; font-size: 0.8rem; 
+    text-shadow: 0 0 10px #fff;
+}
+
 .amp { font-family: 'Pinyon Script', cursive; color: var(--gold); font-size: 0.8em; }
 
-/* COUNTDOWN BOXES */
-.countdown-container { display: flex; gap: 15px; justify-content: center; margin: 30px 0; position: relative; z-index: 2; }
-.time-box { min-width: 70px; padding: 10px; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(8px); border: 1px solid rgba(176, 141, 74, 0.3); border-radius: 8px; }
-.time-box span { font-size: 1.8rem; font-weight: 600; display: block; font-family: 'Cormorant Garamond', serif; color: var(--dark); }
-.time-box p { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; margin: 0; font-weight: 600; color: var(--gold); }
+/* COUNTDOWN BOXES - ENHANCED FOR VISIBILITY */
+.countdown-container {
+    display: flex; gap: 15px; justify-content: center; margin: 25px 0;
+    position: relative; z-index: 2;
+}
+.time-box {
+    min-width: 65px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.7); /* More opaque white */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(176, 141, 74, 0.4);
+    border-radius: 8px;
+}
+.time-box span { font-size: 1.6rem; font-weight: 600; display: block; font-family: 'Cormorant Garamond', serif; color: var(--dark); }
+.time-box p { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 1px; margin: 0; font-weight: 600; color: var(--gold); }
 
-/* UI ELEMENTS */
-.script { font-family: 'Pinyon Script', cursive; }
-.gold-text { color: var(--gold); }
-.center { display: flex; justify-content: center; align-items: center; flex-direction: column; }
-.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-
-#entrance-overlay { position: fixed; inset: 0; background: var(--ivory); z-index: 1000000; display: flex; align-items: center; justify-content: center; transition: 1.5s; }
-.envelope-card { text-align: center; padding: 60px 40px; background: white; border: 1px solid rgba(176, 141, 74, 0.3); border-radius: 4px; box-shadow: 0 20px 50px rgba(0,0,0,0.05); }
-#startBtn { margin-top: 30px; padding: 12px 45px; background: transparent; color: var(--gold); border: 2px solid var(--gold); text-transform: uppercase; letter-spacing: 4px; cursor: pointer; font-weight: 600; }
-.hide-overlay { opacity: 0; pointer-events: none; transform: translateY(-100%); }
+.hero-date { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; letter-spacing: 3px; font-weight: 600; text-shadow: 0 0 10px #fff; margin-top: 10px; }
 
 /* FAMILY SECTION */
-.family-sequence-box { margin: 50px auto; max-width: 800px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.family-sequence-box { margin: 40px auto; max-width: 800px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
 .serif-name-large { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; color: var(--dark); margin: 0; }
 .relationship-label { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; color: var(--gold); font-weight: 600; }
 .parent-names { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 400; margin: 0; }
-.house-name { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; color: #888; text-transform: uppercase; margin-top: 5px; letter-spacing: 1px; }
+.house-name { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; color: #888; text-transform: uppercase; margin-top: 5px; }
 .amp-divider { font-size: 3rem; margin: 5px 0; opacity: 0.8; }
 
 /* EVENT CARD */
@@ -72,7 +98,7 @@ html, body {
 .map-container-refined iframe { border-radius: 4px; display: block; filter: grayscale(10%) contrast(105%); }
 
 /* HELPERS */
-.section-padding { padding: 120px 20px; }
+.section-padding { padding: 100px 20px; }
 .white-bg { background-color: #fff; }
 .ivory-bg { background-color: var(--ivory); }
 .gold-line { width: 120px; height: 1px; background: var(--gold); margin: 60px auto; }
@@ -84,7 +110,7 @@ html, body {
 footer { padding: 100px; border-top: 1px solid #eee; }
 
 @media (max-width: 768px) {
-    .hero { background-attachment: scroll; }
+    .hero { background-attachment: scroll; padding-top: 5vh; background-position: center 30%; }
     .main-title { font-size: 2.8rem; }
     .countdown-container { gap: 10px; }
     .time-box { min-width: 60px; padding: 8px; }
