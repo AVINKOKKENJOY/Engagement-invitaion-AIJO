@@ -3,9 +3,7 @@ if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
 // 1. PETAL GENERATOR
 function createPetals() {
     const container = document.getElementById('petal-container');
-    const petalCount = 100; 
-
-    for (let i = 0; i < petalCount; i++) {
+    for (let i = 0; i < 100; i++) {
         const petal = document.createElement('div');
         petal.className = 'petal';
         const size = Math.random() * 12 + 8 + 'px';
@@ -25,26 +23,31 @@ document.getElementById('startBtn').addEventListener('click', () => {
     music.play().catch(e => console.log("Music ready."));
     document.getElementById('entrance-overlay').classList.add('hide-overlay');
     createPetals();
-    setTimeout(() => { 
-        AOS.init({ duration: 1200, once: true }); 
-    }, 500);
+    setTimeout(() => { AOS.init({ duration: 1200, once: true }); }, 500);
 });
 
-// 3. COUNTDOWN TIMER
-// Set target to August 16, 2026 (Sunday) at 12:00 PM
+// 3. COUNTDOWN TIMER LOGIC
 const engagementDate = new Date("August 16, 2026 12:00:00").getTime();
+
 function updateTimer() {
     const now = new Date().getTime();
     const distance = engagementDate - now;
-    if (distance < 0) { document.getElementById("timer").innerHTML = "CELEBRATING TODAY!"; return; }
+
+    if (distance < 0) { 
+        document.querySelector(".countdown-container").innerHTML = "<h3 style='font-family: Cormorant Garamond; letter-spacing: 5px; font-weight: 600;'>CELEBRATING TODAY!</h3>"; 
+        return; 
+    }
+
     const d = Math.floor(distance / (1000 * 60 * 60 * 24));
     const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const s = Math.floor((distance % (1000 * 60)) / 1000);
+
     document.getElementById("days").innerText = d.toString().padStart(2, '0');
     document.getElementById("hours").innerText = h.toString().padStart(2, '0');
     document.getElementById("mins").innerText = m.toString().padStart(2, '0');
     document.getElementById("secs").innerText = s.toString().padStart(2, '0');
 }
+
 setInterval(updateTimer, 1000);
 updateTimer();

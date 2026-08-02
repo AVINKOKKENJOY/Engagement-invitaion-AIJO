@@ -24,50 +24,22 @@ html, body {
     100% { transform: translateY(110vh) translateX(150px) rotate(720deg); opacity: 0; }
 }
 
-/* HERO SECTION - INTEGRATING WATERCOLOR BACKGROUND */
+/* HERO SECTION - WATERCOLOR BACKGROUND */
 .hero {
     height: 100vh;
     background: url('background.jpg') center center/cover no-repeat fixed;
-    display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
-    position: relative;
-    padding-top: 8vh;
-    color: #1a1a1a;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    position: relative; color: #1a1a1a;
 }
-
-/* Gradient to ensure text is readable at the top while faces show at the bottom */
-.hero-overlay-gradient {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.2) 40%, transparent 100%);
-    pointer-events: none;
-}
-
-.main-title { 
-    font-family: 'Cormorant Garamond', serif; 
-    font-size: clamp(3rem, 10vw, 5.5rem); 
-    margin: 10px 0; 
-    font-weight: 600; 
-    position: relative;
-    z-index: 2;
-    text-shadow: 0 0 20px #ffffff; /* Glow for legibility */
-}
-
+.hero-overlay-gradient { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.1) 40%, transparent 100%); pointer-events: none; }
+.main-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 10vw, 5.5rem); margin: 10px 0; font-weight: 600; text-shadow: 0 0 20px #ffffff; position: relative; z-index: 2; }
 .amp { font-family: 'Pinyon Script', cursive; color: var(--gold); font-size: 0.8em; }
 
-/* COUNTDOWN OVER IMAGE */
-.countdown { 
-    display: flex; gap: 15px; justify-content: center; margin: 30px 0; 
-    position: relative; z-index: 2;
-}
-.time-node { 
-    min-width: 75px; 
-    border-bottom: 2px solid var(--gold); 
-    padding: 5px 10px;
-    background: rgba(255,255,255,0.6);
-    backdrop-filter: blur(5px);
-    border-radius: 4px;
-}
-.time-node span { font-size: 1.8rem; font-weight: 600; display: block; font-family: 'Cormorant Garamond', serif; }
+/* COUNTDOWN BOXES */
+.countdown-container { display: flex; gap: 15px; justify-content: center; margin: 30px 0; position: relative; z-index: 2; }
+.time-box { min-width: 70px; padding: 10px; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(8px); border: 1px solid rgba(176, 141, 74, 0.3); border-radius: 8px; }
+.time-box span { font-size: 1.8rem; font-weight: 600; display: block; font-family: 'Cormorant Garamond', serif; color: var(--dark); }
+.time-box p { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; margin: 0; font-weight: 600; color: var(--gold); }
 
 /* UI ELEMENTS */
 .script { font-family: 'Pinyon Script', cursive; }
@@ -96,16 +68,15 @@ html, body {
 .event-label { font-family: 'Cormorant Garamond', serif; letter-spacing: 2px; font-size: 1.2rem; font-weight: 600; text-transform: uppercase; }
 
 /* MAP */
-.map-container-refined { max-width: 900px; margin: 0 auto; border: 1px solid #eee; padding: 10px; background: white; border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.03); overflow: hidden; }
+.map-container-refined { max-width: 900px; margin: 0 auto; border: 1px solid #eee; border-radius: 8px; overflow: hidden; padding: 10px; background: white; box-shadow: 0 15px 40px rgba(0,0,0,0.03); }
 .map-container-refined iframe { border-radius: 4px; display: block; filter: grayscale(10%) contrast(105%); }
 
 /* HELPERS */
 .section-padding { padding: 120px 20px; }
-.story-text { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; max-width: 800px; margin: 0 auto; }
+.white-bg { background-color: #fff; }
+.ivory-bg { background-color: var(--ivory); }
 .gold-line { width: 120px; height: 1px; background: var(--gold); margin: 60px auto; }
 .larger { font-size: 4.5rem; }
-.ivory-bg { background-color: var(--ivory); }
-.white-bg { background-color: #fff; }
 
 .gold-btn-outline { text-decoration: none; display: inline-block; padding: 12px 35px; border: 1px solid var(--gold); color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; font-weight: 600; transition: 0.3s; }
 .gold-btn-outline:hover { background: var(--gold); color: white; }
@@ -113,8 +84,10 @@ html, body {
 footer { padding: 100px; border-top: 1px solid #eee; }
 
 @media (max-width: 768px) {
-    .hero { background-attachment: scroll; padding-top: 5vh; }
+    .hero { background-attachment: scroll; }
     .main-title { font-size: 2.8rem; }
+    .countdown-container { gap: 10px; }
+    .time-box { min-width: 60px; padding: 8px; }
     .event-info-card { flex-direction: column; gap: 40px; }
     .border-side { border-left: none; border-top: 1px solid #eee; padding-top: 40px; }
 }
