@@ -20,36 +20,59 @@ function createPetals() {
 document.getElementById('startBtn').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'instant' });
     const music = document.getElementById('bgMusic');
-    music.play().catch(e => console.log("Music ready."));
+    music.play().catch(e => console.log("Music play unlocked."));
     document.getElementById('muteBtn').style.display = 'flex';
     document.getElementById('entrance-overlay').classList.add('hide-overlay');
     createPetals();
     setTimeout(() => { AOS.init({ duration: 1200, once: true }); }, 500);
 });
 
-// 3. MUTE TOGGLE
+// 3. MUSIC VISIBILITY LOGIC (Stops song when user leaves site)
+document.addEventListener('visibilitychange', function() {
+    const music = document.getElementById('bgMusic');
+    if (document.hidden) {
+        music.pause();
+    } else {
+        // Only resume if the site was already "Opened" and not manually muted
+        const overlay = document.getElementById('entrance-overlay');
+        const isMuted = music.muted;
+        if (overlay.classList.contains('hide-overlay') && !isMuted) {
+            music.play().catch(e => console.log("Resume failed"));
+        }
+    }
+});
+
+// 4. MUTE TOGGLE
 document.getElementById('muteBtn').addEventListener('click', function() {
     const music = document.getElementById('bgMusic');
     const icon = this.querySelector('i');
     if (music.muted) {
         music.muted = false;
         icon.classList.replace('fa-volume-xmark', 'fa-volume-high');
+        music.play();
     } else {
         music.muted = true;
         icon.classList.replace('fa-volume-high', 'fa-volume-xmark');
+        music.pause();
     }
 });
 
-// 4. COUNTDOWN TIMER
+// 5. COUNTDOWN TIMER
 const engagementDate = new Date("August 16, 2026 12:00:00").getTime();
 function updateTimer() {
     const now = new Date().getTime();
     const distance = engagementDate - now;
-    if (distance < 0) { document.getElementById("timer").innerHTML = "CELEBRATING TODAY!"; return; }
+
+    if (distance < 0) { 
+        document.querySelector(".countdown-container").innerHTML = "<h3 style='font-family: Cormorant Garamond; letter-spacing: 5px; font-weight: 600;'>CELEBRATING TODAY!</h3>"; 
+        return; 
+    }
+
     const d = Math.floor(distance / (1000 * 60 * 60 * 24));
     const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const s = Math.floor((distance % (1000 * 60)) / 1000);
+
     document.getElementById("days").innerText = d.toString().padStart(2, '0');
     document.getElementById("hours").innerText = h.toString().padStart(2, '0');
     document.getElementById("mins").innerText = m.toString().padStart(2, '0');
