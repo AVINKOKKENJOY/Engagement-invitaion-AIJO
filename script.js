@@ -4,14 +4,19 @@ if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
 // 1. PETAL GENERATOR
 function createPetals() {
     const container = document.getElementById('petal-container');
-    for (let i = 0; i < 40; i++) {
+    const petalCount = 40; 
+
+    for (let i = 0; i < petalCount; i++) {
         const petal = document.createElement('div');
         petal.className = 'petal';
+        
         const size = Math.random() * 15 + 8 + 'px';
-        petal.style.width = size; petal.style.height = size;
+        petal.style.width = size;
+        petal.style.height = size;
         petal.style.left = Math.random() * 100 + 'vw';
-        petal.style.animationDuration = Math.random() * 7 + 5 + 's';
+        petal.style.animationDuration = Math.random() * 7 + 5 + 's'; 
         petal.style.animationDelay = Math.random() * 10 + 's';
+        
         container.appendChild(petal);
     }
 }
@@ -19,11 +24,16 @@ function createPetals() {
 // 2. ENTRANCE & MUSIC
 document.getElementById('startBtn').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'instant' });
+    
     const music = document.getElementById('bgMusic');
-    music.play().catch(e => console.log("Music unlocked."));
+    music.play().catch(e => console.log("Audio started"));
+    
     document.getElementById('entrance-overlay').classList.add('hide-overlay');
+    
     createPetals();
-    setTimeout(() => { AOS.init({ duration: 1200, once: true }); }, 500);
+    setTimeout(() => { 
+        AOS.init({ duration: 1200, once: true }); 
+    }, 500);
 });
 
 // 3. COUNTDOWN
