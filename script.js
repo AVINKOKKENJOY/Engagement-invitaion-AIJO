@@ -1,15 +1,14 @@
+// Force scroll to top on refresh
 if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
 
+// 1. PETAL GENERATOR
 function createPetals() {
     const container = document.getElementById('petal-container');
-    const petalCount = 100; 
-
-    for (let i = 0; i < petalCount; i++) {
+    for (let i = 0; i < 100; i++) {
         const petal = document.createElement('div');
         petal.className = 'petal';
         const size = Math.random() * 12 + 8 + 'px';
-        petal.style.width = size;
-        petal.style.height = size;
+        petal.style.width = size; petal.style.height = size;
         petal.style.left = Math.random() * 100 + 'vw';
         petal.style.animationDuration = Math.random() * 7 + 5 + 's'; 
         petal.style.animationDelay = Math.random() * 15 + 's';
@@ -18,17 +17,17 @@ function createPetals() {
     }
 }
 
+// 2. ENTRANCE & INITIALIZATION
 document.getElementById('startBtn').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'instant' });
     const music = document.getElementById('bgMusic');
-    music.play().catch(e => console.log("Audio ready."));
+    music.play().catch(e => console.log("Music unlocked."));
     document.getElementById('entrance-overlay').classList.add('hide-overlay');
     createPetals();
-    setTimeout(() => { 
-        AOS.init({ duration: 1200, once: true }); 
-    }, 500);
+    setTimeout(() => { AOS.init({ duration: 1200, once: true }); }, 500);
 });
 
+// 3. COUNTDOWN TIMER
 const engagementDate = new Date("August 25, 2024 18:00:00").getTime();
 function updateTimer() {
     const now = new Date().getTime();
