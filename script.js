@@ -27,7 +27,7 @@ document.getElementById('startBtn').addEventListener('click', () => {
     setTimeout(() => { AOS.init({ duration: 1200, once: true }); }, 500);
 });
 
-// 3. MUSIC AUTO-PAUSE LOGIC
+// 3. MUSIC AUTO-PAUSE LOGIC (Stops when user leaves tab)
 document.addEventListener('visibilitychange', function() {
     const music = document.getElementById('bgMusic');
     if (document.hidden) {
