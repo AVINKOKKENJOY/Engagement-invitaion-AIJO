@@ -20,14 +20,11 @@ html, body {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
     pointer-events: none; z-index: 999999; overflow: hidden;
 }
-
 .petal {
     position: absolute; background-color: var(--petal-pink);
     border-radius: 150% 0 150% 0; opacity: 0.8;
-    box-shadow: 0 0 8px rgba(255, 192, 203, 0.3);
     animation: fall linear infinite;
 }
-
 @keyframes fall {
     0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
     10% { opacity: 0.8; }
@@ -35,13 +32,13 @@ html, body {
     100% { transform: translateY(110vh) translateX(150px) rotate(720deg); opacity: 0; }
 }
 
-/* TYPOGRAPHY & LAYOUT */
+/* TYPOGRAPHY */
 .script { font-family: 'Pinyon Script', cursive; }
 .gold-text { color: var(--gold); }
 .center { display: flex; justify-content: center; align-items: center; flex-direction: column; }
 .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-/* ENTRANCE */
+/* ENTRANCE OVERLAY */
 #entrance-overlay {
     position: fixed; inset: 0; background: var(--ivory);
     z-index: 1000000; display: flex; align-items: center; justify-content: center;
@@ -58,40 +55,56 @@ html, body {
 .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('photo1.jpg') center/cover no-repeat fixed; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; }
 .main-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 10vw, 6rem); margin: 10px 0; font-weight: 600; letter-spacing: 2px; }
 .amp { font-family: 'Pinyon Script', cursive; color: var(--gold); font-size: 0.8em; }
+
+/* COUNTDOWN */
 .countdown { display: flex; gap: 20px; justify-content: center; margin: 40px 0; }
 .time-node { min-width: 85px; border-bottom: 2px solid var(--gold); padding-bottom: 10px; }
 .time-node span { font-size: 2.2rem; display: block; font-family: 'Cormorant Garamond', serif; }
 
-.serif-name-large { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 600; margin-bottom: 20px; color: var(--dark); }
+/* REARRANGED & ALIGNED FAMILY SECTION */
+.family-alignment-box { margin: 40px auto; max-width: 900px; }
+.serif-name-large { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 600; margin-bottom: 30px; color: var(--dark); }
 .amp-dark { font-family: 'Pinyon Script', cursive; color: var(--gold); font-size: 0.7em; margin: 0 10px; }
-.parent-names { font-family: 'Montserrat', sans-serif; font-size: 1.15rem; margin: 5px 0; }
-.family-separator { font-family: 'Pinyon Script', cursive; font-size: 2rem; opacity: 0.7; color: var(--gold); margin: 0 15px; }
-.family-details-grid { display: flex; justify-content: center; align-items: center; gap: 40px; margin-top: 30px; }
+.family-flex-container { display: flex; justify-content: center; align-items: center; gap: 50px; flex-wrap: wrap; }
+.family-member-group { flex: 1; min-width: 250px; }
+.relationship-label { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.3rem; color: var(--gold); margin-bottom: 5px; }
+.parent-names { font-family: 'Montserrat', sans-serif; font-size: 1.15rem; font-weight: 400; margin: 0; line-height: 1.6; }
+.family-and-divider { font-family: 'Pinyon Script', cursive; font-size: 2.2rem; opacity: 0.8; }
 
-/* GALLERY - 2 AT A TIME */
+/* GALLERY - Desktop: 2 at a time | Mobile: 1 at a time */
 .horizontal-gallery-section { background: #fff; width: 100%; overflow: hidden; padding-bottom: 80px; }
 .marquee-content { display: flex; width: max-content; animation: scrollHorizontal 80s linear infinite; }
 .marquee-content img { width: 50vw; height: 80vh; object-fit: cover; border-right: 4px solid #fff; }
 
-@keyframes scrollHorizontal { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+/* EVENT CARD */
+.event-info-card { background: white; display: flex; justify-content: space-around; padding: 60px 20px; border: 1px solid #eee; border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.03); }
+.event-item { flex: 1; padding: 0 20px; }
+.border-side { border-left: 1px solid #eee; }
 
-/* MAP & HELPERS */
-.map-container-refined { max-width: 800px; margin: 0 auto; border: 10px solid #fff; box-shadow: 0 15px 40px rgba(0,0,0,0.05); overflow: hidden; border-radius: 4px; }
+/* HELPERS */
 .section-padding { padding: 120px 20px; }
 .story-text { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; max-width: 800px; margin: 0 auto; color: #333; }
-.event-info-card { background: white; display: flex; justify-content: space-around; padding: 60px 20px; border: 1px solid #eee; border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.03); }
-.border-left { border-left: 1px solid #eee; }
 .gold-line { width: 120px; height: 1px; background: var(--gold); margin: 60px auto; }
-.larger { font-size: 4.5rem; }
+.larger { font-size: 4.5rem; margin-bottom: 10px; }
 .ivory-bg { background-color: var(--ivory); }
 .white-bg { background-color: #fff; }
 
+/* MAP */
+.map-container-refined { max-width: 800px; margin: 0 auto; border: 10px solid #fff; box-shadow: 0 15px 40px rgba(0,0,0,0.05); border-radius: 4px; overflow: hidden; }
+
+footer { padding: 100px; border-top: 1px solid #eee; }
+.footer-sign { letter-spacing: 12px; font-weight: 400; font-size: 1rem; color: var(--gold); text-transform: uppercase; }
+
+@keyframes scrollHorizontal { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* MOBILE RESPONSIVE ALIGNMENT */
 @media (max-width: 768px) {
     .marquee-content img { width: 100vw; height: 60vh; } 
-    .family-details-grid { flex-direction: column; gap: 30px; }
-    .family-separator { transform: rotate(90deg); margin: 10px 0; }
+    .family-flex-container { flex-direction: column; gap: 30px; }
+    .family-and-divider { transform: rotate(0deg); font-size: 1.8rem; }
     .event-info-card { flex-direction: column; gap: 40px; } 
-    .border-left { border: none; border-top: 1px solid #eee; padding-top: 40px; } 
+    .border-side { border-left: none; border-top: 1px solid #eee; padding-top: 40px; } 
     .main-title { font-size: 3.2rem; }
     .hero { background-attachment: scroll; }
+    .section-padding { padding: 80px 20px; }
 }
