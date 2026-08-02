@@ -1,5 +1,4 @@
 if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
-
 function createPetals() {
     const container = document.getElementById('petal-container');
     for (let i = 0; i < 40; i++) {
@@ -13,16 +12,14 @@ function createPetals() {
         container.appendChild(petal);
     }
 }
-
 document.getElementById('startBtn').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'instant' });
     const music = document.getElementById('bgMusic');
-    music.play().catch(e => console.log("Music Active"));
+    music.play().catch(e => console.log("Music Ready"));
     document.getElementById('entrance-overlay').classList.add('hide-overlay');
     createPetals();
     setTimeout(() => { AOS.init({ duration: 1200, once: true }); }, 500);
 });
-
 const engagementDate = new Date("August 25, 2024 18:00:00").getTime();
 function updateTimer() {
     const now = new Date().getTime();
@@ -38,4 +35,4 @@ function updateTimer() {
     document.getElementById("secs").innerText = s.toString().padStart(2, '0');
 }
 setInterval(updateTimer, 1000);
-updateTimer();ljh
+updateTimer();
