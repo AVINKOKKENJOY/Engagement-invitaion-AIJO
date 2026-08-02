@@ -1,42 +1,46 @@
-// Force scroll to top on refresh
 if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
 
 // 1. PETAL GENERATOR
 function createPetals() {
     const container = document.getElementById('petal-container');
-    const petalCount = 40; 
+    const petalCount = 45; // Increased count
 
     for (let i = 0; i < petalCount; i++) {
         const petal = document.createElement('div');
         petal.className = 'petal';
         
-        const size = Math.random() * 15 + 8 + 'px';
+        // Randomize appearance
+        const size = Math.random() * 15 + 10 + 'px';
         petal.style.width = size;
         petal.style.height = size;
         petal.style.left = Math.random() * 100 + 'vw';
-        petal.style.animationDuration = Math.random() * 7 + 5 + 's'; 
+        
+        // Randomize speed and delay
+        petal.style.animationDuration = Math.random() * 5 + 5 + 's'; 
         petal.style.animationDelay = Math.random() * 10 + 's';
         
         container.appendChild(petal);
     }
 }
 
-// 2. ENTRANCE & MUSIC
+// 2. ENTRANCE LOGIC
 document.getElementById('startBtn').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'instant' });
     
     const music = document.getElementById('bgMusic');
-    music.play().catch(e => console.log("Audio started"));
+    music.play().catch(e => console.log("Music play blocked by browser."));
     
     document.getElementById('entrance-overlay').classList.add('hide-overlay');
     
+    // Create petals immediately when button is clicked
     createPetals();
+    
     setTimeout(() => { 
         AOS.init({ duration: 1200, once: true }); 
     }, 500);
 });
 
-// 3. COUNTDOWN
+// 3. COUNTDOWN TIMER
 const engagementDate = new Date("August 25, 2024 18:00:00").getTime();
 function updateTimer() {
     const now = new Date().getTime();
