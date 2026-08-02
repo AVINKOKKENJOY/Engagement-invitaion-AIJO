@@ -15,45 +15,27 @@ html, body {
     line-height: 1.8; overflow-x: hidden; text-align: center;
 }
 
-/* PETAL SYSTEM - FORCED TO TOP */
+/* PETAL SYSTEM - TOP LAYER */
 #petal-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 999999; /* Higher than everything else */
-    overflow: hidden;
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none; z-index: 999999; overflow: hidden;
 }
 
 .petal {
-    position: absolute;
-    background-color: var(--petal-pink);
-    border-radius: 150% 0 150% 0;
-    opacity: 0.8;
-    filter: drop-shadow(0 0 5px rgba(255, 192, 203, 0.5));
+    position: absolute; background-color: var(--petal-pink);
+    border-radius: 150% 0 150% 0; opacity: 0.8;
+    box-shadow: 0 0 8px rgba(255, 192, 203, 0.3);
     animation: fall linear infinite;
 }
 
 @keyframes fall {
-    0% {
-        transform: translateY(-10vh) translateX(0) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.8;
-    }
-    90% {
-        opacity: 0.8;
-    }
-    100% {
-        transform: translateY(110vh) translateX(150px) rotate(720deg);
-        opacity: 0;
-    }
+    0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { transform: translateY(110vh) translateX(150px) rotate(720deg); opacity: 0; }
 }
 
-/* TYPOGRAPHY */
+/* TYPOGRAPHY & LAYOUT */
 .script { font-family: 'Pinyon Script', cursive; }
 .gold-text { color: var(--gold); }
 .center { display: flex; justify-content: center; align-items: center; flex-direction: column; }
@@ -72,7 +54,7 @@ html, body {
 #startBtn { margin-top: 30px; padding: 12px 45px; background: transparent; color: var(--gold); border: 2px solid var(--gold); text-transform: uppercase; letter-spacing: 4px; cursor: pointer; font-weight: 600; }
 .hide-overlay { opacity: 0; pointer-events: none; transform: translateY(-100%); }
 
-/* HERO & SECTIONS */
+/* HERO */
 .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('photo1.jpg') center/cover no-repeat fixed; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; }
 .main-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 10vw, 6rem); margin: 10px 0; font-weight: 600; letter-spacing: 2px; }
 .amp { font-family: 'Pinyon Script', cursive; color: var(--gold); font-size: 0.8em; }
@@ -80,22 +62,23 @@ html, body {
 .time-node { min-width: 85px; border-bottom: 2px solid var(--gold); padding-bottom: 10px; }
 .time-node span { font-size: 2.2rem; display: block; font-family: 'Cormorant Garamond', serif; }
 
-.serif-name-large { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 600; margin-bottom: 20px; }
+.serif-name-large { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 600; margin-bottom: 20px; color: var(--dark); }
 .amp-dark { font-family: 'Pinyon Script', cursive; color: var(--gold); font-size: 0.7em; margin: 0 10px; }
 .parent-names { font-family: 'Montserrat', sans-serif; font-size: 1.15rem; margin: 5px 0; }
-.family-separator { font-family: 'Pinyon Script', cursive; font-size: 2rem; opacity: 0.7; color: var(--gold); }
+.family-separator { font-family: 'Pinyon Script', cursive; font-size: 2rem; opacity: 0.7; color: var(--gold); margin: 0 15px; }
 .family-details-grid { display: flex; justify-content: center; align-items: center; gap: 40px; margin-top: 30px; }
 
-/* GALLERY */
+/* GALLERY - 2 AT A TIME */
 .horizontal-gallery-section { background: #fff; width: 100%; overflow: hidden; padding-bottom: 80px; }
 .marquee-content { display: flex; width: max-content; animation: scrollHorizontal 80s linear infinite; }
 .marquee-content img { width: 50vw; height: 80vh; object-fit: cover; border-right: 4px solid #fff; }
 
 @keyframes scrollHorizontal { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
+/* MAP & HELPERS */
 .map-container-refined { max-width: 800px; margin: 0 auto; border: 10px solid #fff; box-shadow: 0 15px 40px rgba(0,0,0,0.05); overflow: hidden; border-radius: 4px; }
 .section-padding { padding: 120px 20px; }
-.story-text { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; max-width: 800px; margin: 0 auto; }
+.story-text { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; max-width: 800px; margin: 0 auto; color: #333; }
 .event-info-card { background: white; display: flex; justify-content: space-around; padding: 60px 20px; border: 1px solid #eee; border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.03); }
 .border-left { border-left: 1px solid #eee; }
 .gold-line { width: 120px; height: 1px; background: var(--gold); margin: 60px auto; }
@@ -103,4 +86,12 @@ html, body {
 .ivory-bg { background-color: var(--ivory); }
 .white-bg { background-color: #fff; }
 
-@media (max-width: 768px) { .marquee-content img { width: 100vw; height: 60vh; } .family-details-grid { flex-direction: column; gap: 30px; } .family-separator { transform: rotate(90deg); margin: 10px 0; } .event-info-card { flex-direction: column; gap: 40px; } .border-left { border: none; border-top: 1px solid #eee; padding-top: 40px; } .main-title { font-size: 3.2rem; } .hero { background-attachment: scroll; } }
+@media (max-width: 768px) {
+    .marquee-content img { width: 100vw; height: 60vh; } 
+    .family-details-grid { flex-direction: column; gap: 30px; }
+    .family-separator { transform: rotate(90deg); margin: 10px 0; }
+    .event-info-card { flex-direction: column; gap: 40px; } 
+    .border-left { border: none; border-top: 1px solid #eee; padding-top: 40px; } 
+    .main-title { font-size: 3.2rem; }
+    .hero { background-attachment: scroll; }
+}
