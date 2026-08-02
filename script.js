@@ -27,13 +27,12 @@ document.getElementById('startBtn').addEventListener('click', () => {
     setTimeout(() => { AOS.init({ duration: 1200, once: true }); }, 500);
 });
 
-// 3. MUSIC VISIBILITY LOGIC (Stops song when user leaves site)
+// 3. MUSIC AUTO-PAUSE LOGIC
 document.addEventListener('visibilitychange', function() {
     const music = document.getElementById('bgMusic');
     if (document.hidden) {
         music.pause();
     } else {
-        // Only resume if the site was already "Opened" and not manually muted
         const overlay = document.getElementById('entrance-overlay');
         const isMuted = music.muted;
         if (overlay.classList.contains('hide-overlay') && !isMuted) {

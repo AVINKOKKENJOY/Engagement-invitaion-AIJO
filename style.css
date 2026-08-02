@@ -21,7 +21,6 @@ html, body {
 @keyframes fall {
     0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
     10% { opacity: 0.8; }
-    90% { opacity: 0.8; }
     100% { transform: translateY(110vh) translateX(150px) rotate(720deg); opacity: 0; }
 }
 
@@ -34,22 +33,40 @@ html, body {
     align-items: center; justify-content: center; transition: 0.3s;
 }
 
-/* HERO SECTION - WATERCOLOR BACKGROUND */
+/* HERO SECTION - FILLED BACKGROUND */
 .hero {
     height: 100vh;
-    background: #fdfaf5 url('background.jpg') center bottom/contain no-repeat fixed;
+    /* Changed to 'cover' to fill background. Position 'bottom' keeps faces visible. */
+    background: url('background.jpg') center bottom/cover no-repeat fixed;
     display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
     position: relative; color: #1a1a1a; padding-top: 10vh;
 }
-.hero-overlay-gradient { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, transparent 60%); pointer-events: none; }
-.main-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 8vw, 5rem); margin: 10px 0; font-weight: 600; text-shadow: 0 0 20px #ffffff; position: relative; z-index: 2; }
+
+.hero-overlay-gradient {
+    position: absolute; inset: 0;
+    /* Soft white fade at top helps text legibility */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.main-title { 
+    font-family: 'Cormorant Garamond', serif; 
+    font-size: clamp(2.5rem, 8vw, 5rem); 
+    margin: 10px 0; font-weight: 600; 
+    text-shadow: 0 0 20px #ffffff; position: relative; z-index: 2;
+}
+
 .tagline { letter-spacing: 6px; font-weight: 600; font-size: 0.85rem; color: var(--gold); text-shadow: 0 0 10px #fff; }
 .amp { font-family: 'Pinyon Script', cursive; color: var(--gold); font-size: 0.8em; }
 .hero-date { font-family: 'Montserrat', sans-serif; letter-spacing: 4px; font-weight: 500; font-size: 0.9rem; text-shadow: 0 0 10px #fff; }
 
 /* COUNTDOWN BOXES */
 .countdown-container { display: flex; gap: 12px; justify-content: center; margin: 25px 0; position: relative; z-index: 2; }
-.time-box { min-width: 65px; padding: 10px; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(8px); border: 1px solid rgba(176, 141, 74, 0.3); border-radius: 8px; }
+.time-box { 
+    min-width: 65px; padding: 10px; 
+    background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(8px); 
+    border: 1px solid rgba(176, 141, 74, 0.3); border-radius: 8px; 
+}
 .time-box span { font-size: 1.6rem; font-weight: 600; display: block; font-family: 'Cormorant Garamond', serif; color: var(--dark); }
 .time-box p { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 1px; margin: 0; font-weight: 600; color: var(--gold); }
 
@@ -84,6 +101,7 @@ html, body {
 .white-bg { background-color: #fff; }
 .ivory-bg { background-color: var(--ivory); }
 .gold-line { width: 120px; height: 1px; background: var(--gold); margin: 60px auto; }
+.larger { font-size: 4.5rem; }
 
 .gold-btn-outline { text-decoration: none; display: inline-block; padding: 12px 35px; border: 1px solid var(--gold); color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; font-weight: 600; transition: 0.3s; }
 .gold-btn-outline:hover { background: var(--gold); color: white; }
@@ -91,7 +109,7 @@ html, body {
 footer { padding: 100px; border-top: 1px solid #eee; }
 
 @media (max-width: 768px) {
-    .hero { background-attachment: scroll; background-size: cover; padding-top: 8vh; }
+    .hero { background-attachment: scroll; padding-top: 8vh; }
     .main-title { font-size: 2.8rem; }
     .countdown-container { gap: 10px; }
     .time-box { min-width: 55px; padding: 8px; }
