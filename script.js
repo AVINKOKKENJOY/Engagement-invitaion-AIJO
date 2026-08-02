@@ -20,7 +20,7 @@ function createPetals() {
 document.getElementById('startBtn').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'instant' });
     const music = document.getElementById('bgMusic');
-    music.play().catch(e => console.log("Music unlocked."));
+    music.play().catch(e => console.log("Music Ready"));
     document.getElementById('muteBtn').style.display = 'flex';
     document.getElementById('entrance-overlay').classList.add('hide-overlay');
     createPetals();
@@ -30,9 +30,7 @@ document.getElementById('startBtn').addEventListener('click', () => {
 // 3. MUSIC AUTO-PAUSE LOGIC
 document.addEventListener('visibilitychange', function() {
     const music = document.getElementById('bgMusic');
-    if (document.hidden) {
-        music.pause();
-    } else {
+    if (document.hidden) { music.pause(); } else {
         const overlay = document.getElementById('entrance-overlay');
         if (overlay.classList.contains('hide-overlay') && !music.muted) {
             music.play().catch(e => console.log("Resume failed"));
@@ -45,17 +43,13 @@ document.getElementById('muteBtn').addEventListener('click', function() {
     const music = document.getElementById('bgMusic');
     const icon = this.querySelector('i');
     if (music.muted) {
-        music.muted = false;
-        icon.classList.replace('fa-volume-xmark', 'fa-volume-high');
-        music.play();
+        music.muted = false; icon.classList.replace('fa-volume-xmark', 'fa-volume-high'); music.play();
     } else {
-        music.muted = true;
-        icon.classList.replace('fa-volume-high', 'fa-volume-xmark');
-        music.pause();
+        music.muted = true; icon.classList.replace('fa-volume-high', 'fa-volume-xmark'); music.pause();
     }
 });
 
-// 5. COUNTDOWN TIMER
+// 5. COUNTDOWN TIMER (Aug 16, 2026 at 12:00 PM)
 const engagementDate = new Date("August 16, 2026 12:00:00").getTime();
 function updateTimer() {
     const now = new Date().getTime();
