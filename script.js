@@ -20,16 +20,32 @@ function createPetals() {
 document.getElementById('startBtn').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'instant' });
     const music = document.getElementById('bgMusic');
-    music.play().catch(e => console.log("Audio unlock triggered."));
+    music.play().catch(e => console.log("Music ready."));
+    
+    // Show Mute Button
+    document.getElementById('muteBtn').style.display = 'flex';
+    
     document.getElementById('entrance-overlay').classList.add('hide-overlay');
     createPetals();
     setTimeout(() => { AOS.init({ duration: 1200, once: true }); }, 500);
 });
 
-// 3. COUNTDOWN TIMER LOGIC
-// Engagement Date: August 16, 2026 at 12:00 PM
-const engagementDate = new Date("August 16, 2026 12:00:00").getTime();
+// 3. MUTE TOGGLE LOGIC
+document.getElementById('muteBtn').addEventListener('click', function() {
+    const music = document.getElementById('bgMusic');
+    const icon = this.querySelector('i');
+    
+    if (music.muted) {
+        music.muted = false;
+        icon.classList.replace('fa-volume-xmark', 'fa-volume-high');
+    } else {
+        music.muted = true;
+        icon.classList.replace('fa-volume-high', 'fa-volume-xmark');
+    }
+});
 
+// 4. COUNTDOWN TIMER
+const engagementDate = new Date("August 16, 2026 12:00:00").getTime();
 function updateTimer() {
     const now = new Date().getTime();
     const distance = engagementDate - now;
@@ -49,6 +65,5 @@ function updateTimer() {
     document.getElementById("mins").innerText = m.toString().padStart(2, '0');
     document.getElementById("secs").innerText = s.toString().padStart(2, '0');
 }
-
 setInterval(updateTimer, 1000);
 updateTimer();

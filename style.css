@@ -15,45 +15,38 @@ html, body {
     line-height: 1.8; overflow-x: hidden; text-align: center;
 }
 
-/* PETAL SYSTEM - TOP LAYER */
+/* PETAL SYSTEM */
 #petal-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999999; overflow: hidden; }
 .petal { position: absolute; background-color: var(--petal-pink); border-radius: 150% 0 150% 0; opacity: 0.8; animation: fall linear infinite; }
 @keyframes fall {
     0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
     10% { opacity: 0.8; }
-    90% { opacity: 0.8; }
     100% { transform: translateY(110vh) translateX(150px) rotate(720deg); opacity: 0; }
 }
 
-/* HERO SECTION - WATERCOLOR BACKGROUND & TOP TEXT ALIGNMENT */
+/* MUTE CONTROL */
+.mute-control {
+    position: fixed; bottom: 25px; right: 25px;
+    width: 45px; height: 45px;
+    border-radius: 50%; border: 1px solid var(--gold);
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--gold); cursor: pointer;
+    z-index: 1000001; display: none; /* Initially Hidden */
+    align-items: center; justify-content: center;
+    transition: 0.3s; font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.mute-control:hover { background: var(--gold); color: white; transform: scale(1.1); }
+
+/* HERO SECTION - WATERCOLOR & ALIGNMENT */
 .hero {
     height: 100vh;
     background: url('background.jpg') center bottom/cover no-repeat fixed;
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: flex-start; /* Move text area up */
-    position: relative; 
-    color: #1a1a1a;
-    padding-top: 10vh; /* Top padding to place text in the negative space */
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    position: relative; color: #1a1a1a; padding-top: 10vh;
 }
-
-.hero-overlay-gradient {
-    position: absolute; inset: 0;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, transparent 60%);
-    pointer-events: none;
-}
-
-.main-title { 
-    font-family: 'Cormorant Garamond', serif; 
-    font-size: clamp(2.5rem, 8vw, 5rem); 
-    margin: 5px 0; 
-    font-weight: 600; 
-    text-shadow: 0 0 20px #ffffff;
-    position: relative;
-    z-index: 2;
-}
-
+.hero-overlay-gradient { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, transparent 60%); pointer-events: none; }
+.main-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 8vw, 5rem); margin: 5px 0; font-weight: 600; text-shadow: 0 0 20px #ffffff; position: relative; z-index: 2; }
 .tagline { letter-spacing: 6px; font-weight: 600; font-size: 0.85rem; margin-bottom: 5px; color: var(--gold); text-shadow: 0 0 10px #fff; }
 .amp { font-family: 'Pinyon Script', cursive; color: var(--gold); font-size: 0.8em; }
 .hero-date { font-family: 'Montserrat', sans-serif; letter-spacing: 4px; font-weight: 500; font-size: 0.9rem; text-shadow: 0 0 10px #fff; }
@@ -99,7 +92,6 @@ html, body {
 .white-bg { background-color: #fff; }
 .ivory-bg { background-color: var(--ivory); }
 .gold-line { width: 120px; height: 1px; background: var(--gold); margin: 60px auto; }
-.larger { font-size: 4.5rem; }
 
 .gold-btn-outline { text-decoration: none; display: inline-block; padding: 12px 35px; border: 1px solid var(--gold); color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; font-weight: 600; transition: 0.3s; }
 .gold-btn-outline:hover { background: var(--gold); color: white; }
