@@ -21,7 +21,6 @@ html, body {
 @keyframes fall {
     0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
     10% { opacity: 0.8; }
-    90% { opacity: 0.8; }
     100% { transform: translateY(110vh) translateX(150px) rotate(720deg); opacity: 0; }
 }
 
@@ -34,7 +33,7 @@ html, body {
     align-items: center; justify-content: center; transition: 0.3s;
 }
 
-/* HERO SECTION - FILLED BACKGROUND & ALIGNMENT */
+/* HERO SECTION - STRETCHED */
 .hero {
     height: 100vh;
     background: url('background.jpg') no-repeat;
@@ -48,11 +47,11 @@ html, body {
 .amp { font-family: 'Pinyon Script', cursive; color: var(--gold); font-size: 0.8em; }
 .hero-date { font-family: 'Montserrat', sans-serif; letter-spacing: 4px; font-weight: 500; font-size: 0.9rem; text-shadow: 0 0 10px #fff; }
 
-/* COUNTDOWN BOXES */
+/* COUNTDOWN */
 .countdown-container { display: flex; gap: 12px; justify-content: center; margin: 25px 0; position: relative; z-index: 2; }
 .time-box { min-width: 65px; padding: 10px; background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(8px); border: 1px solid rgba(176, 141, 74, 0.3); border-radius: 8px; }
-.time-box span { font-size: 1.6rem; font-weight: 600; display: block; font-family: 'Cormorant Garamond', serif; color: var(--dark); }
-.time-box p { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 1px; margin: 0; font-weight: 600; color: var(--gold); }
+.time-box span { font-size: 1.6rem; font-weight: 600; display: block; font-family: 'Cormorant Garamond', serif; }
+.time-box p { font-size: 0.55rem; text-transform: uppercase; margin: 0; color: var(--gold); }
 
 /* UI ELEMENTS */
 .script { font-family: 'Pinyon Script', cursive; }
@@ -65,7 +64,6 @@ html, body {
 #startBtn { margin-top: 30px; padding: 12px 45px; background: transparent; color: var(--gold); border: 2px solid var(--gold); text-transform: uppercase; letter-spacing: 4px; cursor: pointer; font-weight: 600; }
 .hide-overlay { opacity: 0; pointer-events: none; transform: translateY(-100%); }
 
-/* FAMILY SECTION */
 .family-sequence-box { margin: 50px auto; max-width: 800px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
 .serif-name-large { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; color: var(--dark); margin: 0; }
 .relationship-label { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; color: var(--gold); font-weight: 600; }
@@ -73,14 +71,12 @@ html, body {
 .house-name { font-family: 'Montserrat', sans-serif; font-size: 0.9rem; color: #888; text-transform: uppercase; margin-top: 5px; }
 .amp-divider { font-size: 3rem; margin: 5px 0; opacity: 0.8; }
 
-/* EVENT CARD */
 .event-info-card { background: white; display: flex; justify-content: space-around; padding: 60px 20px; border: 1px solid #eee; border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.03); }
 .event-item { flex: 1; padding: 0 20px; }
 .border-side { border-left: 1px solid #eee; }
 .gold-icon-large { font-size: 2rem; color: var(--gold); margin-bottom: 20px; }
 .event-label { font-family: 'Cormorant Garamond', serif; letter-spacing: 2px; font-size: 1.2rem; font-weight: 600; text-transform: uppercase; }
 
-/* MAP */
 .map-container-refined { max-width: 900px; margin: 0 auto; border: 1px solid #eee; padding: 10px; background: white; border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.03); overflow: hidden; }
 .map-container-refined iframe { border-radius: 4px; display: block; filter: grayscale(10%) contrast(105%); }
 
@@ -88,7 +84,6 @@ html, body {
 .white-bg { background-color: #fff; }
 .ivory-bg { background-color: var(--ivory); }
 .gold-line { width: 120px; height: 1px; background: var(--gold); margin: 60px auto; }
-.larger { font-size: 4.5rem; }
 
 .gold-btn-outline { text-decoration: none; display: inline-block; padding: 12px 35px; border: 1px solid var(--gold); color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; font-weight: 600; transition: 0.3s; }
 .gold-btn-outline:hover { background: var(--gold); color: white; }
@@ -98,6 +93,8 @@ footer { padding: 100px; border-top: 1px solid #eee; }
 @media (max-width: 768px) {
     .hero { background-attachment: scroll; background-size: cover; padding-top: 5vh; }
     .main-title { font-size: 2.8rem; }
+    .countdown-container { gap: 10px; }
+    .time-box { min-width: 55px; padding: 8px; }
     .event-info-card { flex-direction: column; gap: 40px; }
     .border-side { border-left: none; border-top: 1px solid #eee; padding-top: 40px; }
 }
