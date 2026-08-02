@@ -27,32 +27,31 @@ html, body {
 /* MUTE CONTROL */
 .mute-control { position: fixed; bottom: 25px; right: 25px; width: 45px; height: 45px; border-radius: 50%; border: 1px solid var(--gold); background: rgba(255, 255, 255, 0.8); color: var(--gold); cursor: pointer; z-index: 1000001; display: none; align-items: center; justify-content: center; }
 
-/* HERO SECTION - ADJUSTED FOR BLANK SPACE */
+/* HERO SECTION - ADJUSTED FOR BLANK SPACE & FULL STRETCH */
 .hero {
     height: 100vh;
     background: url('background.jpg') no-repeat;
-    background-size: cover;
-    background-position: center bottom; /* Keeps faces visible at bottom */
+    background-size: 100% 100%;
+    background-position: center bottom; /* Keeps people at the bottom */
     background-attachment: fixed;
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    justify-content: flex-start; /* Pushes text to the blank top area */
+    justify-content: flex-start; /* Pushes text to blank top area */
     position: relative; 
-    padding-top: 6vh; /* Vertical offset to keep text in empty space */
+    padding-top: 8vh;
 }
 
-/* Soft white glow behind top text area to separate it from watercolor texture */
 .hero-overlay-gradient {
     position: absolute; inset: 0;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 50%);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 50%);
     pointer-events: none;
 }
 
 .main-title { 
     font-family: 'Cormorant Garamond', serif; 
     font-size: clamp(2.8rem, 9vw, 5.5rem); 
-    margin: 5px 0; font-weight: 600; 
+    margin: 10px 0; font-weight: 600; 
     text-shadow: 0 0 15px rgba(255,255,255,0.9); 
     position: relative; z-index: 2;
 }
@@ -61,7 +60,7 @@ html, body {
 .amp { font-family: 'Pinyon Script', cursive; color: var(--gold); font-size: 0.8em; }
 .hero-date { font-family: 'Montserrat', sans-serif; letter-spacing: 4px; font-weight: 500; font-size: 0.9rem; text-shadow: 0 0 10px #fff; margin-bottom: 10px; }
 
-/* COUNTDOWN BOXES - SEMI-TRANSPARENT */
+/* COUNTDOWN BOXES */
 .countdown-container { display: flex; gap: 10px; justify-content: center; margin: 15px 0; position: relative; z-index: 2; }
 .time-box { 
     min-width: 60px; padding: 10px; 
@@ -96,7 +95,7 @@ html, body {
 .gold-icon-large { font-size: 2rem; color: var(--gold); margin-bottom: 20px; }
 .event-label { font-family: 'Cormorant Garamond', serif; letter-spacing: 2px; font-size: 1.2rem; font-weight: 600; text-transform: uppercase; }
 
-.map-container-refined { max-width: 900px; margin: 0 auto; border: 1px solid #eee; border-radius: 8px; overflow: hidden; padding: 10px; background: white; box-shadow: 0 15px 40px rgba(0,0,0,0.03); }
+.map-container-refined { max-width: 900px; margin: 0 auto; border: 1px solid #eee; padding: 10px; background: white; border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.03); overflow: hidden; }
 .map-container-refined iframe { border-radius: 4px; display: block; filter: grayscale(10%) contrast(105%); }
 
 .section-padding { padding: 120px 20px; }
@@ -108,7 +107,7 @@ html, body {
 footer { padding: 100px; border-top: 1px solid #eee; }
 
 @media (max-width: 768px) {
-    .hero { background-attachment: scroll; background-position: center bottom; padding-top: 4vh; }
+    .hero { background-attachment: scroll; background-position: center bottom; padding-top: 5vh; }
     .main-title { font-size: 2.2rem; }
     .event-info-card { flex-direction: column; gap: 40px; }
     .border-side { border-left: none; border-top: 1px solid #eee; padding-top: 40px; }
