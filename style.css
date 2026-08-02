@@ -21,6 +21,7 @@ html, body {
 @keyframes fall {
     0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
     10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
     100% { transform: translateY(110vh) translateX(150px) rotate(720deg); opacity: 0; }
 }
 
@@ -38,40 +39,24 @@ html, body {
 
 /* HERO */
 .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('photo1.jpg') center/cover no-repeat fixed; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; }
-.main-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 10vw, 6rem); margin: 10px 0; font-weight: 600; letter-spacing: 2px; }
+.main-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 8vw, 5.5rem); margin: 10px 0; font-weight: 600; letter-spacing: 2px; }
 .amp { font-family: 'Pinyon Script', cursive; color: var(--gold); font-size: 0.8em; }
+
+/* COUNTDOWN */
 .countdown { display: flex; gap: 20px; justify-content: center; margin: 40px 0; }
 .time-node { min-width: 85px; border-bottom: 2px solid var(--gold); padding-bottom: 10px; }
 .time-node span { font-size: 2.2rem; display: block; font-family: 'Cormorant Garamond', serif; }
 
-/* FAMILY SECTION */
+/* FAMILY SECTION (Sequential Order Styles) */
 .family-sequence-box { margin: 50px auto; max-width: 800px; display: flex; flex-direction: column; align-items: center; gap: 25px; }
-.serif-name-large { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 600; color: var(--dark); margin: 0; }
+.family-unit { margin: 5px 0; }
+.serif-name-large { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 600; color: var(--dark); margin: 0; line-height: 1.1; }
 .relationship-label { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.3rem; color: var(--gold); margin-bottom: 5px; font-weight: 600; }
 .parent-names { font-family: 'Montserrat', sans-serif; font-size: 1.25rem; font-weight: 400; margin: 0; color: #444; }
-.amp-divider { font-size: 3rem; margin: 5px 0; opacity: 0.8; }
+.house-name { font-family: 'Montserrat', sans-serif; font-size: 0.95rem; color: #888; letter-spacing: 1px; text-transform: uppercase; margin-top: 5px; font-weight: 600; }
+.amp-divider { font-size: 3.5rem; margin: 5px 0; opacity: 0.8; }
 
-/* MAP SECTION INTEGRATION */
-.map-container-refined { 
-    max-width: 900px; 
-    margin: 0 auto; 
-    border: 1px solid #eee; 
-    padding: 10px; 
-    background: white; 
-    box-shadow: 0 15px 40px rgba(0,0,0,0.03);
-    border-radius: 8px;
-    overflow: hidden;
-}
-.map-container-refined iframe { border-radius: 4px; display: block; filter: grayscale(10%) contrast(105%); }
-.map-action { margin-top: 30px; }
-.gold-btn-outline { 
-    text-decoration: none; display: inline-block; padding: 12px 35px; border: 1px solid var(--gold); 
-    color: var(--gold); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; font-weight: 600; 
-    transition: 0.3s; 
-}
-.gold-btn-outline:hover { background: var(--gold); color: white; }
-
-/* GALLERY */
+/* GALLERY - Cinematic 2 at a time */
 .horizontal-gallery-section { background: #fff; width: 100%; overflow: hidden; padding-bottom: 80px; }
 .marquee-content { display: flex; width: max-content; animation: scrollHorizontal 80s linear infinite; }
 .marquee-content img { width: 50vw; height: 80vh; object-fit: cover; border-right: 4px solid #fff; }
@@ -80,9 +65,13 @@ html, body {
 .event-info-card { background: white; display: flex; justify-content: space-around; padding: 60px 20px; border: 1px solid #eee; border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.03); }
 .event-item { flex: 1; padding: 0 20px; }
 .border-side { border-left: 1px solid #eee; }
+.gold-icon-large { font-size: 2.2rem; color: var(--gold); margin-bottom: 20px; }
+.event-label { font-family: 'Cormorant Garamond', serif; letter-spacing: 3px; font-size: 1.3rem; margin-bottom: 10px; font-weight: 600; text-transform: uppercase; }
 
-/* HELPERS */
+/* MAP & HELPERS */
+.map-container-refined { max-width: 800px; margin: 0 auto; border: 10px solid #fff; box-shadow: 0 15px 40px rgba(0,0,0,0.05); overflow: hidden; border-radius: 4px; }
 .section-padding { padding: 120px 20px; }
+.story-text { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; max-width: 800px; margin: 0 auto; color: #333; }
 .gold-line { width: 120px; height: 1px; background: var(--gold); margin: 60px auto; }
 .larger { font-size: 4.5rem; margin-bottom: 10px; }
 .ivory-bg { background-color: var(--ivory); }
@@ -93,9 +82,8 @@ html, body {
 @media (max-width: 768px) {
     .marquee-content img { width: 100vw; height: 65vh; } 
     .event-info-card { flex-direction: column; gap: 40px; } 
-    .border-side { border: none; border-top: 1px solid #eee; padding-top: 40px; } 
-    .main-title { font-size: 3.2rem; }
+    .border-side { border-left: none; border-top: 1px solid #eee; padding-top: 40px; } 
+    .main-title { font-size: 3rem; }
     .hero { background-attachment: scroll; }
-    .section-padding { padding: 80px 20px; }
-    .map-container-refined { padding: 5px; }
+    .serif-name-large { font-size: 2.5rem; }
 }
